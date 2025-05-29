@@ -1,0 +1,232 @@
+\documentclass[11pt, twoside]{book}
+    \usepackage[english]{babel}
+    \usepackage[utf8]{inputenc}
+    \usepackage[T1]{fontenc}
+
+						%%%%% Pacchetti
+\usepackage{/Users/mattia/Library/TeXShop/Templates/CustomBookEnglish/Layout}
+\usepackage{/Users/mattia/Library/TeXShop/Templates/CustomBookEnglish/Pacchetti}
+\usepackage{/Users/mattia/Library/TeXShop/Templates/CustomBookEnglish/TikZ}
+\usepackage{/Users/mattia/Library/TeXShop/Templates/CustomBookEnglish/Definizioni}
+\usepackage{/Users/mattia/Library/TeXShop/Templates/CustomBookEnglish/Environments}	
+\usepackage{/Users/mattia/Library/TeXShop/Templates/CustomBookEnglish/Custom}	
+\input{/Users/mattia/Library/TeXShop/Templates/CustomBookEnglish/Referencing.tex}
+\usepackage{/Users/mattia/Library/TeXShop/Templates/CustomBookEnglish/Comandi}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage[proportional, scaled=1, space=1]{erewhon}
+\usepackage[upint, smallerops, bigdelims, utopia]{newtxmath}
+
+\newcommand{\rank}[1]{\text{rank}\hspace{-.05cm}\left({#1}\right)}
+\newcommand{\kc}[0]{ \raisebox{0.75pt}{\scalebox{1}{$($}} \overline{\raisebox{0pt}[.8\height]{$\k$}}\hspace{.01cm} \raisebox{0.75pt}{\scalebox{1}{$)$}}}
+\newcommand{\ka}[0]{\overline{\raisebox{0pt}[.85\height]{$\k$}}\,}
+\newcommand{\Qc}[0]{\raisebox{0cm}{$\big($\hspace{.015cm}}\overline{\raisebox{0pt}[.85\height]{$\Q$}}\raisebox{0cm}{\hspace{.015cm}$\big)$}}
+\tikzcdset{arrow style=tikz}
+\tikzset{>=stealth}
+
+\newcommand{\rvline}{\hspace*{-\arraycolsep}\vline\hspace*{-\arraycolsep}}
+\renewcommand{\thesubparagraph}{\Alph{subparagraph}}
+\titleformat{\subparagraph}[runin]{\normalfont\normalsize\bfseries}{\thesubparagraph}{1em}{}
+\titlespacing*{\subparagraph} {\parindent}{.025ex plus 0ex minus .25ex}{1em}
+
+\usepackage{extpfeil}
+\DeclareRobustCommand\longtwoheadrightarrow
+     {\xtwoheadrightarrow{}}
+\DeclareRobustCommand\longto
+     {\relbar\joinrel\xrightarrow{\ \ \ }}
+
+%%%SISTEMA DOPPI SPAZI IN AMBIENTI COME EQUAZIONE-TEOREMA CONSECUTIVI
+\makeatletter
+\newcommand{\adjustspacing}{%
+  \ifhmode
+    \unskip
+    \vskip-1.75\abovedisplayskip
+    \vskip 5pt % Modificare per cambiare lo spazio tra due ambienti consecutivi
+  \fi
+}
+
+\preto\equation{\adjustspacing}
+
+% Patch theorem-like environments (add your custom environments here)
+\preto\The{\adjustspacing}
+\preto\Pro{\adjustspacing}
+\preto\Le{\adjustspacing}
+\preto\Co{\adjustspacing}
+\preto\Oss{\adjustspacing}
+\preto\Exa{\adjustspacing}
+\preto\align{\adjustspacing}
+
+\makeatother
+
+\newcommand{\dspaceq}[1]{\vspace{-1.8\baselineskip}
+\begin{adjustwidth}{-50pt}{0pt}#1\end{adjustwidth}
+\ifvmode\mbox{}\par\nobreak\vspace{-1.5\baselineskip}\fi}
+
+\newcommand{\dspace}[1]{\vspace{-1.2\baselineskip}
+\begin{adjustwidth}{-50pt}{0pt}#1\end{adjustwidth}
+\ifvmode\mbox{}\par\nobreak\vspace{-1.5\baselineskip}\fi
+}
+
+\newcommand{\plim}[2]{{\mathop{\text{lim}}\raisebox{-.145cm}{\hspace{-.55cm}\scriptsize$\longleftarrow$}\raisebox{-.1cm}{\hspace{-.05cm}\scriptsize $#1$}{#2}}}
+
+
+\newcommand{\dlim}[2]{{\textstyle\varinjlim_{#1}}{#2}}
+
+\newcommand{\sstar}{\mathrel{\scalebox{0.6}{$\star$}}}
+%%Utile dentro Proof
+\newcommand{\sub}{\subparagraph*{}\nobreak\vspace{-\baselineskip}}
+
+\newcommand{\Alg}{\hspace{-.005cm}\text{-}\hspace{-.005cm}{\bf Alg}}
+\newcommand{\Grp}{{\bf Grp}}
+\newcommand{\lin}{{\text{-lin}}}
+\newcommand{\GLF}[1]{{\bf GL}_{#1}}
+\newcommand{\VecF}{\k{\text{-{\bf VecF}}}}
+\newcommand{\SetC}{{\bf Set}}
+\newcommand{\Rings}{{\bf Ring}}
+\newcommand{\DRings}{{\bf DRing}}
+\renewcommand{\Diff}{{\bf \text{-}DMod}}
+\renewcommand{\o}{{\text{o}}}
+\DeclareMathAlphabet{\mathcal}{OMS}{cmsy}{m}{n}
+\renewcommand{\d}{\nabla}
+
+%\usepackage{ulem}
+\usepackage{pagecolor}
+\definecolor{titlepage}{RGB}{51,153,128}
+
+\usepackage{afterpage}
+
+\usepackage{dsfont}
+\newcommand{\kas}{\hspace{.015cm}\scalebox{.6}{$\ka$}}
+\newcommand{\TC}[1]{\left\langle{#1}\right\rangle\hspace{-.1cm}\raisebox{-2pt}{\scriptsize$\otimes$}}
+\newcommand{\Cof}{{\text{\bf Cof}}{\raisebox{-1.25pt}{{\scriptsize$S$}}}\hspace{-.05cm}}
+\DeclareRobustCommand{\TAut}{{\text{\bf Aut}}^{\otimes}\hspace{-.025cm}(\hspace{-.025cm}\omega)}
+\newcommand{\Rep}[1]{\hspace{-.005cm}\text{-}\hspace{-.005cm}\text{\bf Rep}{\raisebox{-1.25pt}{{\scriptsize$#1$}}}\hspace{-.05cm}}
+\newcommand{\RepF}[1]{\hspace{-.005cm}\text{-}\hspace{-.005cm}\text{\bf RepF}{\raisebox{-1.25pt}{{\scriptsize$#1$}}}\hspace{-.05cm}}
+\newcommand{\AutF}[1]{\underline{\text{\bf Aut}}(#1)}
+\newcommand{\AutT}[1]{\text{\bf Aut}^\otimes\hspace{-.025cm}(\hspace{-.025cm}\omega\otimes {#1})}
+
+\newcommand{\NFunctorC}[8]{\begin{tikzcd}[ampersand replacement=\&]
+#1 \arrow[r] \&  #2 \\[-20pt]
+#3 \arrow[d, "{#7}"']\arrow[r,mapsto]  \& #4\\
+#5 \arrow[r,mapsto] \& #6\arrow[u,"#8"'] 
+\end{tikzcd}}
+
+\newcommand{\NFunctor}[8]{\begin{tikzcd}[ampersand replacement=\&]
+#1 \arrow[r] \&  #2 \\[-20pt]
+#3 \arrow[d, "{#7}"']\arrow[r,mapsto]  \& #4\arrow[d,"#8"] \\
+#5 \arrow[r,mapsto] \& #6
+\end{tikzcd}}
+
+\newcommand{\Functor}[9]{\begin{tikzcd}[ampersand replacement=\&]
+#1\colon\hspace{-1cm} \& #2 \arrow[r] \&  #3 \\[-20pt]
+\&#4 \arrow[d, "{#8}"']\arrow[r,mapsto]  \& #5\arrow[d,"#9"] \\
+\&#6 \arrow[r,mapsto] \& #7
+\end{tikzcd}}
+
+\newcommand{\FunctorC}[9]{\begin{tikzcd}[ampersand replacement=\&]
+#1\colon\hspace{-1cm} \& #2 \arrow[r] \&  #3 \\[-20pt]
+\&#4 \arrow[d, "{#8}"']\arrow[r,mapsto]  \& #5 \\
+\&#6 \arrow[r,mapsto] \& #7\arrow[u,"#9"']
+\end{tikzcd}}
+
+
+\newcommand{\FunctorComplete}[2]{\hspace{-.25cm}\adjustbox{scale=.75}{\begin{tikzcd}[ampersand replacement=\&]
+\\[5pt]
+#1\arrow[d,mapsto, shorten <=0pt]\\
+#2
+\end{tikzcd}}}
+
+\newcommand{\Natural}[8]{\begin{tikzcd}[ampersand replacement=\&]
+#1\colon\hspace{-1cm} \& #2 \arrow[r] \&  #3 \\[-16pt]
+#4\colon\hspace{-1.35cm} \& #5 \arrow[r] \&  #6 \\[-22pt]
+\&#7 \arrow[r,mapsto] \& #8
+\end{tikzcd}}
+
+\newcommand{\NNatural}[6]{\begin{tikzcd}[ampersand replacement=\&]
+#1 \arrow[r] \&  #2 \\[-16pt]
+#3 \arrow[r] \&  #4 \\[-22pt]
+#5 \arrow[r,mapsto] \& #6
+\end{tikzcd}}
+
+\newcommand{\dimt}[1]{\normalfont{\text{td}}\hspace{-.05cm}\left(#1\right)\hspace{-.05cm}}
+
+\newcommand{\one}[0]{\boldsymbol{1}}
+
+\usepackage[cmtip,all]{xy}
+\newcommand{\squig}{\xymatrix@C=1.5em{{}\ar@{~>}[r]&{}} 
+}
+\usepackage[color]{changebar}
+\cbcolor{blue}
+
+\usepackage{microtype}
+
+\strictpagecheck
+\raggedbottom
+\begin{document}
+\input{AuxiliaryFiles/Title}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%									FRONTMATTER
+\frontmatter\pagestyle{fancyfront}
+%%%%%	%%%%%%%%%%%%%%%%%%%%%%%							TOC
+\begingroup
+{
+	\let\cleardoublepage\relax
+	\renewcommand\contentsname{}
+	\noindent\\[92pt]\begin{tikzpicture}[remember picture, overlay]
+		\clip (-80,-95) rectangle (40,10);
+		\pgftext[right,x=14.75cm,y=0.2cm]{\HUGE\bfseries\noindent		Contents}
+		\end{tikzpicture}\vspace{-2.5cm}
+		
+	\tableofcontents
+	\vspace{.25cm}
+}
+%%%%%	%%%%%%%%%%%%%%%%%%%%%%%							ABSTRACT+INTRO+ACKNOWLEDGMENTS
+%\input{Chapters/Abstract}		%% Introduction
+%\input{AuxiliaryFiles/Acknowledgements}						%TODO AGGIUNGERE DI NUOVO
+\endgroup
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%								MAINMATTER
+\input{Chapters/Introduction}
+\mainmatter
+\pagestyle{fancymain}
+\fancyheadoffset[L]{\dimexpr\oddsidemargin-0in\relax}
+\fancyheadoffset[R]{\dimexpr\oddsidemargin-0in\relax}
+\normalfont\normalsize
+
+\restoregeometry
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%						CHAPTERS
+
+\titleformat{\chapter}[display]{\bfseries\Large}	{\vspace{-.5cm}\filleft\MakeUppercase{\chaptertitlename} \HUGE\thechapter}{.1ex}{\titlerule\vspace{1ex}\filleft}[\vspace{1.25ex}]
+\titlespacing*{\chapter}{0pt}{0.1\baselineskip}{.5\baselineskip}
+
+\input{Chapters/2}		%% (Pro)algebraic groups					%TODO AGGIUNGERE DI NUOVO	
+\input{Chapters/3}		%% Tannakian Formalism and Representations
+\input{Chapters/4}		%% Free proalgebraic groups; construction of -
+\input{Chapters/5}		%% Differential Galois Theory
+	\input{Chapters/6}	%% Section: the proof of the main theorem
+
+\pagestyle{fancyapp}
+\begin{appendices}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%									BACKMATTER
+\backmatter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%							BIBLIOGRAFIA
+\pagestyle{fancyBibliografia}
+\titleformat{\chapter}
+	[hang]
+	{\vspace{-2cm}\Huge}
+	{}
+	{0em}
+	{}
+	[\Large {\vspace{2cm}\begin{tikzpicture} [remember picture, overlay]
+	\pgftext[right,x=14.75cm,y=0.2cm]{\HUGE\bfseries 
+	Bibliography}
+	\end{tikzpicture}\vspace{2cm}}]
+
+	\nocite{*}
+	\bibliographystyle{amsalpha}
+	\bibliography{AuxiliaryFiles/Bibliography}
+	\addtocontents{toc}{\vspace{1cm}}
+	\addcontentsline{toc}{part}{Bibliography}
+\cleardoublepage
+\end{appendices}
+\end{document}
